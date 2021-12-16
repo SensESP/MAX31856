@@ -1,10 +1,10 @@
 {
-    "name": "XXXX",
-    "keywords": "XXXX, SensESP, Signal K, marine, boat, sensor, hardware, embedded, device",
-    "description": "XXXX device support for the SensESP sensor framework",
+    "name": "MAX31856",
+    "keywords": "MAX31856, thermocouple, SensESP, Signal K, marine, boat, sensor, hardware, embedded, device",
+    "description": "MAX31856 device support for the SensESP sensor framework",
     "repository": {
         "type": "git",
-        "url": "https://github.com/SensESP/XXXX.git"
+        "url": "https://github.com/SensESP/MAX31856.git"
     },
     "authors": [
         {
@@ -20,9 +20,9 @@
     ],
     "dependencies": [
         {
-            "name": "XXXXYYYY",
-            "owner": "ZZZZ",
-            "version": "^VVVVV"
+            "name": "Adafruit MAX31856 Library",
+            "owner": "adafruit",
+            "version": "^1.2.5"
         },
         {
             "name": "SensESP",
