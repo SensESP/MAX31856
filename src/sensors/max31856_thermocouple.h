@@ -1,8 +1,9 @@
 #ifndef _MAX31856_thermocouple_H_
 #define _MAX31856_thermocouple_H_
 #include "Adafruit_MAX31856.h"
-#include "sensor.h"
+#include "sensors/sensor.h"
 
+namespace sensesp {
 
 /**
  * @brief Reads the temperature from an Adafruit MAX31856 (or compatible) thermocouple
@@ -22,7 +23,7 @@
  * @param read_delay How often to read the sensor, in ms.
  * @param config_path The path to the sensor in the Config UI.
  **/
-class MAX31856Thermocouple : public NumericSensor {
+class MAX31856Thermocouple : public SensorT<float> {
  public:
   /* DEPRECATED: drdy_pin no longer used */
   MAX31856Thermocouple(int8_t cs_pin, int8_t mosi_pin, int8_t miso_pin,
@@ -60,7 +61,7 @@ class MAX31856Thermocouple : public NumericSensor {
   MAX31856Thermocouple(Adafruit_MAX31856* max31856, uint read_delay = 500,
                        String config_path = "");                     
   Adafruit_MAX31856* max31856_;
-  void enable() override final;
+  void start() override final;
 
  private:
   int8_t data_ready_pin_;
@@ -70,5 +71,7 @@ class MAX31856Thermocouple : public NumericSensor {
   virtual bool set_configuration(const JsonObject& config) override;
   virtual String get_config_schema() override;
 };
+
+}  // namespace sensesp
 
 #endif
