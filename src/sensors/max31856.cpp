@@ -1,11 +1,11 @@
-#include "max31856_thermocouple.h"
+#include "max31856.h"
 
 #include "Arduino.h"
 #include "sensesp.h"
 
 namespace sensesp {
   
-MAX31856Thermocouple::MAX31856Thermocouple(int8_t cs_pin, int8_t mosi_pin,
+MAX31856::MAX31856(int8_t cs_pin, int8_t mosi_pin,
                                            int8_t miso_pin, int8_t clk_pin,
                                            int8_t drdy_pin,
                                            max31856_thermocoupletype_t tc_type,
@@ -24,7 +24,7 @@ MAX31856Thermocouple::MAX31856Thermocouple(int8_t cs_pin, int8_t mosi_pin,
   max31856_->setConversionMode(MAX31856_ONESHOT_NOWAIT);
 }
 
-MAX31856Thermocouple::MAX31856Thermocouple(Adafruit_MAX31856* max31856,
+MAX31856::MAX31856(Adafruit_MAX31856* max31856,
                                            uint read_delay, String config_path)
     : FloatSensor(config_path),
       max31856_{max31856},
@@ -33,7 +33,7 @@ MAX31856Thermocouple::MAX31856Thermocouple(Adafruit_MAX31856* max31856,
   max31856_->setConversionMode(MAX31856_ONESHOT_NOWAIT);
 }
 
-void MAX31856Thermocouple::start() {
+void MAX31856::start() {
   // Must be at least 500 to allow time for temperature "conversion".
   if (!sensor_detected_) {
     debugE("MAX31856 not enabled: no sensor detected.");
@@ -53,7 +53,7 @@ void MAX31856Thermocouple::start() {
   } 
 }
 
-void MAX31856Thermocouple::get_configuration(JsonObject& root) {
+void MAX31856::get_configuration(JsonObject& root) {
   root["read_delay"] = read_delay_;
 };
 
@@ -64,9 +64,9 @@ static const char SCHEMA[] PROGMEM = R"###({
     }
   })###";
 
-String MAX31856Thermocouple::get_config_schema() { return FPSTR(SCHEMA); }
+String MAX31856::get_config_schema() { return FPSTR(SCHEMA); }
 
-bool MAX31856Thermocouple::set_configuration(const JsonObject& config) {
+bool MAX31856::set_configuration(const JsonObject& config) {
   String expected[] = {"read_delay"};
   for (auto str : expected) {
     if (!config.containsKey(str)) {
