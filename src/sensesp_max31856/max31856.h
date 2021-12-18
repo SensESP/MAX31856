@@ -1,7 +1,7 @@
 #ifndef _SENSESP_SENSORS_MAX31856_H_
 #define _SENSESP_SENSORS_MAX31856_H_
 #include "Adafruit_MAX31856.h"
-#include "sensors/sensor.h"
+#include "sensesp/sensors/sensor.h"
 
 namespace sensesp {
 
