@@ -1,9 +1,9 @@
 #include <Adafruit_MAX31856.h>
 
+#include "sensesp/signalk/signalk_output.h"
+#include "sensesp/transforms/linear.h"
 #include "sensesp_app_builder.h"
-#include "sensors/max31856.h"
-#include "signalk/signalk_output.h"
-#include "transforms/linear.h"
+#include "sensesp_max31856/max31856.h"
 
 using namespace sensesp;
 
